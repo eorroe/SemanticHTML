@@ -61,6 +61,7 @@ It will be:
 - Styled the same
 - Have the same `prototype` and `constructor` and the exact same `API`
 - Accept the same attribtues
+- Behave the same way
 
 By the last one meaning I can do:
 
