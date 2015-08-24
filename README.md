@@ -195,4 +195,4 @@ Whichever `extends` would be decided.
 
 The final thing about this proposal is would styling `button { /*styles*/ }` affect the elements that have `is="button"` that's for you guys to decide.
 
-### If your reading this and know someone who would like to put this into action please let's start a discussion in the [issues](https://github.com/eorroe/SemanticWEB/issues)
+### If you're reading this and know someone who would like to put this into action please let's start a discussion in the [issues](https://github.com/eorroe/SemanticWEB/issues)
