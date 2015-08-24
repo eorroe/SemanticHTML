@@ -26,7 +26,7 @@ This is how we currently write some `HTML`:
 
 What if we could write our markup like this:
 
-**First think you'll notice is I'm using `app` keyword, this is just what I would use but corresoponding to the app. For a Twitter application I may use `twitter`**
+**First thing you'll notice is I'm using `app` keyword, this is just what I would use but corresoponding to the app. For a Twitter application I may use `twitter`**
 
 ```HTML
 <app-steps>
