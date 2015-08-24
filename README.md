@@ -90,7 +90,7 @@ input.is = 'input'; // this will do everything as mentioned above
 
 3.I can easily query the `DOM` via **Tag Name** instead of `classes`:
 
-```
+```JS
 var stepInputs = document.getElementsByTagName('app-step-input');
 // or
 var stepInputs = document.querySelectorAll('app-step-input');
@@ -100,28 +100,26 @@ So now I can have different `input` elements without having different **classes*
 
 4.Classes and IDs are still very usefull.
 
-**HTML:**
 ```HTML
 <app-steps class="flex-container flex">
   <app-step class="flex-container flex">
     <app-step-title is="h1" class="flex"></app-step-title>
-    <app-step-info is="span" class="flex></app-step-info>
+    <app-step-info is="span" class="flex"></app-step-info>
     <app-step-action is="button" class="flex"></app-step-action>
   </app-step>
   <app-step class="flex-container flex">
     <app-step-title is="h1" class="flex"></app-step-title>
-    <app-step-info is="span" class="flex></app-step-info>
+    <app-step-info is="span" class="flex"></app-step-info>
     <app-step-action is="button" class="flex"></app-step-action>
   </app-step>
   <app-step class="flex-container flex">
     <app-step-title is="h1" class="flex"></app-step-title>
-    <app-step-info is="span" class="flex></app-step-info>
+    <app-step-info is="span" class="flex"></app-step-info>
     <app-step-action is="button" class="flex"></app-step-action>
   </app-step>
 </app-steps>
 ```
 
-**CSS:**
 ```CSS
 .flex-container {
   display: flex;
@@ -144,7 +142,6 @@ app-step {
 
 Yet this is how I would like to really write my `HTML/CSS`, having this **SemanticWEB** where I don't use any classes:
 
-**HTML:**
 ```HTML
 <app-steps>
   <app-step>
@@ -165,7 +162,6 @@ Yet this is how I would like to really write my `HTML/CSS`, having this **Semant
 </app-steps>
 ```
 
-**CSS:**
 ```CSS
 .flex-container {
   display: flex;
@@ -178,10 +174,10 @@ Yet this is how I would like to really write my `HTML/CSS`, having this **Semant
 }
 
 app-steps {
- /*Styles*/
- extends: .flex-container, flex;
- /*OR*/
- extends(.flex-container, flex);
+  /*Styles*/
+  extends: .flex-container, flex;
+  /*OR*/
+  extends(.flex-container, flex);
 }
 
 app-step {
@@ -194,6 +190,40 @@ app-step {
 
 Whichever `extends` would be decided.
 
-The final thing about this proposal is would styling `button { /*styles*/ }` affect the elements that have `is="button"` that's for you guys to decide.
+The final thing about this proposal is would styling `button { /*styles*/ }` affect the elements that have `is="button"` I have no idea what would be best (discuss in a issue)
+
+
+# Why use this:
+
+This is not **Web Components**, this is about making your simple "Custom Elements" easily the same as the already provided Elements, or if you do use Custom elements they too can be inherited via `is` attribute or `.registerElement()`.
+
+So here's a small use case:
+
+**HTML:**
+```HTML
+<body>
+  <template id="stepsTemp">
+    <app-step>
+      <app-step-title is="h1"></app-step-title>
+      <app-step-info is="span"></app-step-info>
+      <app-step-action is="button" type="button"></app-step-action>
+    </app-step>
+  </template>
+  <app-steps id="steps"> </app-steps>
+</body>
+```
+
+**JS:**
+```JS
+var stepsEl = document.getElementById('steps'),
+stepsTemp = document.getElementById('stepsTemp');
+
+var content = stepsTemp.content.cloneNode(true);
+// change the content to correspond with whatever data
+stepsEl.appendChild(content);
+```
+
+**Look just skipped a step**, no need to register `<app-step-title>`, `<app-step-info>`, and `<app-step-action>` to inherit `h1`, `span` and `button`.
+Because it's automatically done through my markup. With a simple `is` attribute. You also get all the benefits mentioned above.
 
 ### If you're reading this and know someone who would like to put this into action please let's start a discussion in the [issues](https://github.com/eorroe/SemanticWEB/issues)
