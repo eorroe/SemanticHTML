@@ -195,7 +195,7 @@ The final thing about this proposal is would styling `button { /*styles*/ }` aff
 
 # Why use this:
 
-This is not **Web Components**, this is about making your simple "Custom Elements" easily the same as the already provided Elements, or if you do use Custom elements they too can be inherited via `is` attribute or `.registerElement()`.
+This is not **Web Components**, this is about easily making your simple "Custom Elements" the same as the already provided Elements with the `is` attribute, or if you do use Custom elements they too can be inherited via `is` attribute or `.registerElement()`.
 
 So here's a small use case:
 
